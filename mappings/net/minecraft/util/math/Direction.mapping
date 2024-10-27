@@ -115,7 +115,7 @@ CLASS net/minecraft/class_2350 net/minecraft/util/math/Direction
 		ARG 1 y
 		ARG 2 z
 		ARG 3 fallback
-	METHOD method_62673 getHorizontalDegrees (Lnet/minecraft/class_2350;)F
+	METHOD method_62673 getHorizontalDegreesOrThrow (Lnet/minecraft/class_2350;)F
 		ARG 0 direction
 	METHOD method_62674 fromVector (Lnet/minecraft/class_2382;Lnet/minecraft/class_2350;)Lnet/minecraft/class_2350;
 		ARG 0 vec
