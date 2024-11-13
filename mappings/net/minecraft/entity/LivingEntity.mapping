@@ -49,7 +49,6 @@ CLASS net/minecraft/class_1309 net/minecraft/entity/LivingEntity
 	FIELD field_6229 lastHandSwingProgress F
 	FIELD field_6230 lastAttackedTime I
 	FIELD field_6231 SPRINTING_SPEED_BOOST Lnet/minecraft/class_1322;
-	FIELD field_6232 scoreAmount I
 	FIELD field_6233 stepBobbingAmount F
 	FIELD field_6234 syncedHandStacks Lnet/minecraft/class_2371;
 	FIELD field_6235 hurtTime I
@@ -167,12 +166,12 @@ CLASS net/minecraft/class_1309 net/minecraft/entity/LivingEntity
 		COMMENT <p> The default behavior spawns a wither rose if {@code adversary} is a {@code WitherEntity}.
 		ARG 1 adversary
 			COMMENT the main adversary responsible for this entity's death
-	METHOD method_23883 dropXp (Lnet/minecraft/class_3218;Lnet/minecraft/class_1297;)V
+	METHOD method_23883 dropExperience (Lnet/minecraft/class_3218;Lnet/minecraft/class_1297;)V
 		COMMENT Drops experience when this entity is killed.
 		COMMENT
 		COMMENT <p>To control the details of experience dropping, consider overriding
-		COMMENT {@link #shouldAlwaysDropXp()}, {@link #shouldDropXp()}, and
-		COMMENT {@link #getXpToDrop()}.
+		COMMENT {@link #shouldAlwaysDropExperience()}, {@link #shouldDropExperience()}, and
+		COMMENT {@link #getExperienceToDrop()}.
 		ARG 1 world
 		ARG 2 attacker
 	METHOD method_24518 isHolding (Lnet/minecraft/class_1792;)Z
@@ -382,7 +381,7 @@ CLASS net/minecraft/class_1309 net/minecraft/entity/LivingEntity
 	METHOD method_5936 canPickUpLoot ()Z
 	METHOD method_5973 canTarget (Lnet/minecraft/class_1299;)Z
 		ARG 1 type
-	METHOD method_59923 getXpToDrop (Lnet/minecraft/class_3218;Lnet/minecraft/class_1297;)I
+	METHOD method_59923 getExperienceToDrop (Lnet/minecraft/class_3218;Lnet/minecraft/class_1297;)I
 		ARG 1 world
 		ARG 2 attacker
 	METHOD method_59924 getKnockbackAgainst (Lnet/minecraft/class_1297;Lnet/minecraft/class_1282;)F
@@ -495,17 +494,17 @@ CLASS net/minecraft/class_1309 net/minecraft/entity/LivingEntity
 	METHOD method_6050 tickStatusEffects ()V
 	METHOD method_6052 getAttacking ()Lnet/minecraft/class_1309;
 	METHOD method_6053 tickGliding ()V
-	METHOD method_6054 shouldDropXp ()Z
+	METHOD method_6054 shouldDropExperience ()Z
 		COMMENT Returns if this entity should drop experience on death when the {@linkplain
 		COMMENT net.minecraft.world.GameRules#DO_MOB_LOOT doMobLoot} game rule is
 		COMMENT enabled and has been attacked by a player.
 		COMMENT
-		COMMENT <p>If {@link #shouldAlwaysDropXp() shouldAlwaysDropXp()} returns {@code
+		COMMENT <p>If {@link #shouldAlwaysDropExperience() shouldAlwaysDropExperience()} returns {@code
 		COMMENT true}, this check is disregarded.
 		COMMENT
-		COMMENT @see #dropXp
-		COMMENT @see #shouldAlwaysDropXp()
-		COMMENT @see #getXpToDrop()
+		COMMENT @see #dropExperience
+		COMMENT @see #shouldAlwaysDropExperience()
+		COMMENT @see #getExperienceToDrop()
 	METHOD method_6055 getHandSwingProgress (F)F
 		ARG 1 tickDelta
 	METHOD method_6056 damageShield (F)V
@@ -532,7 +531,7 @@ CLASS net/minecraft/class_1309 net/minecraft/entity/LivingEntity
 		ARG 1 world
 		ARG 2 reason
 	METHOD method_6070 tickCramming ()V
-	METHOD method_6071 shouldAlwaysDropXp ()Z
+	METHOD method_6071 shouldAlwaysDropExperience ()Z
 		COMMENT Returns if this entity may always drop experience, skipping any
 		COMMENT other checks.
 		COMMENT
@@ -618,7 +617,7 @@ CLASS net/minecraft/class_1309 net/minecraft/entity/LivingEntity
 	METHOD method_6107 getSoundVolume ()F
 	METHOD method_6108 updatePostDeath ()V
 	METHOD method_6109 isBaby ()Z
-	METHOD method_6110 getXpToDrop (Lnet/minecraft/class_3218;)I
+	METHOD method_6110 getExperienceToDrop (Lnet/minecraft/class_3218;)I
 		COMMENT Called when this entity is killed and returns the amount of experience
 		COMMENT to drop.
 		COMMENT
@@ -648,7 +647,7 @@ CLASS net/minecraft/class_1309 net/minecraft/entity/LivingEntity
 	METHOD method_6118 getEquippedStack (Lnet/minecraft/class_1304;)Lnet/minecraft/class_1799;
 		ARG 1 slot
 	METHOD method_6119 tickHandSwing ()V
-	METHOD method_6120 getBaseMovementSpeedMultiplier ()F
+	METHOD method_6120 getBaseWaterMovementSpeedMultiplier ()F
 	METHOD method_6121 tryAttack (Lnet/minecraft/class_3218;Lnet/minecraft/class_1297;)Z
 		ARG 1 world
 		ARG 2 target
@@ -737,16 +736,19 @@ CLASS net/minecraft/class_1309 net/minecraft/entity/LivingEntity
 		ARG 2 stack
 	METHOD method_64449 (Lnet/minecraft/class_3218;Lnet/minecraft/class_1799;)V
 		ARG 2 stack
-	METHOD method_64618 canSee (Lnet/minecraft/class_1297;Lnet/minecraft/class_3959$class_3960;Lnet/minecraft/class_3959$class_242;Ljava/util/function/DoubleSupplier;)Z
+	METHOD method_64618 canSee (Lnet/minecraft/class_1297;Lnet/minecraft/class_3959$class_3960;Lnet/minecraft/class_3959$class_242;D)Z
 		ARG 1 entity
 		ARG 2 shapeType
 		ARG 3 fluidHandling
 		ARG 4 entityY
-	METHOD method_64619 isEntityLookingAtMe (Lnet/minecraft/class_1309;DZZLjava/util/function/Predicate;[Ljava/util/function/DoubleSupplier;)Z
+	METHOD method_64619 isEntityLookingAtMe (Lnet/minecraft/class_1309;DZZ[D)Z
 		ARG 1 entity
 		ARG 5 visualShape
-		ARG 6 predicate
-		ARG 7 entityYChecks
+		ARG 6 checkedYs
 	METHOD method_64620 (Lnet/minecraft/class_1309;)Z
 		ARG 0 entity
+	METHOD method_65343 setAttackingPlayer (Lnet/minecraft/class_1282;)Lnet/minecraft/class_1657;
+		ARG 1 damageSource
+	METHOD method_65344 becomeAngry (Lnet/minecraft/class_1282;)V
+		ARG 1 damageSource
 	CLASS class_6823 FallSounds

@@ -372,7 +372,7 @@ CLASS net/minecraft/class_1297 net/minecraft/entity/Entity
 		COMMENT {@return the default name of the entity}
 		COMMENT
 		COMMENT @see EntityType#getName
-	METHOD method_23316 offsetX (D)D
+	METHOD method_23316 getBodyX (D)D
 		ARG 1 widthScale
 	METHOD method_23317 getX ()D
 	METHOD method_23318 getY ()D
@@ -383,7 +383,7 @@ CLASS net/minecraft/class_1297 net/minecraft/entity/Entity
 		ARG 1 widthScale
 	METHOD method_23323 getBodyY (D)D
 		ARG 1 heightScale
-	METHOD method_23324 offsetZ (D)D
+	METHOD method_23324 getBodyZ (D)D
 		ARG 1 widthScale
 	METHOD method_23325 getParticleZ (D)D
 		ARG 1 widthScale
@@ -1377,10 +1377,9 @@ CLASS net/minecraft/class_1297 net/minecraft/entity/Entity
 		COMMENT
 		COMMENT @see #setSneaking
 		COMMENT @see #isInSneakingPose
-	METHOD method_5716 updateKilledAdvancementCriterion (Lnet/minecraft/class_1297;ILnet/minecraft/class_1282;)V
+	METHOD method_5716 updateKilledAdvancementCriterion (Lnet/minecraft/class_1297;Lnet/minecraft/class_1282;)V
 		ARG 1 entityKilled
-		ARG 2 score
-		ARG 3 damageSource
+		ARG 2 damageSource
 	METHOD method_5718 getBrightnessAtEyes ()F
 	METHOD method_5719 copyPositionAndRotation (Lnet/minecraft/class_1297;)V
 		COMMENT Sets the entity's position and rotation the same as {@code entity}.
@@ -2312,6 +2311,11 @@ CLASS net/minecraft/class_1297 net/minecraft/entity/Entity
 	METHOD method_65038 isControlledByPlayer ()Z
 	METHOD method_65039 (Lnet/minecraft/class_2680;)Z
 		ARG 0 state
+	METHOD method_65341 calculateDefaultBoundingBox (Lnet/minecraft/class_243;)Lnet/minecraft/class_238;
+		ARG 1 pos
+	METHOD method_65342 setMovement (ZLnet/minecraft/class_243;)V
+		ARG 1 onGround
+		ARG 2 movement
 	METHOD method_7325 isSpectator ()Z
 		COMMENT {@return whether the entity is a spectator}
 		COMMENT

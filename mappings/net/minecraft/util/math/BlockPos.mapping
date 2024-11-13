@@ -195,11 +195,14 @@ CLASS net/minecraft/class_2338 net/minecraft/util/math/BlockPos
 		ARG 4 z
 	METHOD method_49638 ofFloored (Lnet/minecraft/class_2374;)Lnet/minecraft/class_2338;
 		ARG 0 pos
-	METHOD method_49925 iterateRecursively (Lnet/minecraft/class_2338;IILjava/util/function/BiConsumer;Ljava/util/function/Predicate;)I
+	METHOD method_49925 iterateRecursively (Lnet/minecraft/class_2338;IILjava/util/function/BiConsumer;Ljava/util/function/Function;)I
 		COMMENT Iterates from {@code pos} recursively, like in a fill tool in a raster image editor.
 		COMMENT {@code callback} is called once (and only once) for each position it finds. When this
-		COMMENT returns {@code true} and the depth/iteration limit is not reached yet, {@code nextQueuer}
-		COMMENT queues the next (usually neighboring) positions to iterate, with the depth incremented by one.
+		COMMENT returns {@link BlockPos.IterationState#STOP}, the iteration is immediately aborted.
+		COMMENT If this returns {@link BlockPos.IterationState#ACCEPT}, and the depth/iteration limit
+		COMMENT is not reached yet, the iteration count is incremented and {@code nextQueuer}
+		COMMENT queues the next (usually neighboring) positions to iterate, with the depth
+		COMMENT incremented by one. {@link BlockPos.IterationState#SKIP} simply skips the position.
 		COMMENT
 		COMMENT @return the total number of iterations
 		ARG 0 pos
@@ -250,6 +253,7 @@ CLASS net/minecraft/class_2338 net/minecraft/util/math/BlockPos
 		FIELD field_48446 currentX I
 		FIELD field_48447 currentY I
 		FIELD field_48448 currentZ I
+	CLASS class_10384 IterationState
 	CLASS class_2339 Mutable
 		METHOD <init> (DDD)V
 			ARG 1 x

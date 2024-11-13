@@ -717,6 +717,11 @@ CLASS net/minecraft/class_4970 net/minecraft/block/AbstractBlock
 		ARG 3 pos
 	METHOD method_9573 getSoundGroup (Lnet/minecraft/class_2680;)Lnet/minecraft/class_2498;
 		ARG 1 state
+	METHOD method_9574 getPickStack (Lnet/minecraft/class_4538;Lnet/minecraft/class_2338;Lnet/minecraft/class_2680;Z)Lnet/minecraft/class_1799;
+		ARG 1 world
+		ARG 2 pos
+		ARG 3 state
+		ARG 4 includeData
 	METHOD method_9575 getAmbientOcclusionLightLevel (Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;)F
 		COMMENT @see AbstractBlockState#getAmbientOcclusionLightLevel
 		ARG 1 state
@@ -1341,6 +1346,10 @@ CLASS net/minecraft/class_4970 net/minecraft/block/AbstractBlock
 		METHOD method_64025 getInsideCollisionShape (Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;)Lnet/minecraft/class_265;
 			ARG 1 world
 			ARG 2 pos
+		METHOD method_65171 getPickStack (Lnet/minecraft/class_4538;Lnet/minecraft/class_2338;Z)Lnet/minecraft/class_1799;
+			ARG 1 world
+			ARG 2 pos
+			ARG 3 includeData
 		CLASS class_3752 ShapeCache
 			FIELD field_16559 DIRECTIONS [Lnet/minecraft/class_2350;
 			FIELD field_17651 exceedsCube Z

@@ -381,8 +381,6 @@ CLASS net/minecraft/class_1792 net/minecraft/item/Item
 			ARG 2 consumableComponent
 		METHOD method_62834 useRemainder (Lnet/minecraft/class_1792;)Lnet/minecraft/class_1792$class_1793;
 			ARG 1 convertInto
-		METHOD method_63681 modelId (Lnet/minecraft/class_2960;)Lnet/minecraft/class_1792$class_1793;
-			ARG 1 modelId
 		METHOD method_63682 equippable (Lnet/minecraft/class_1304;)Lnet/minecraft/class_1792$class_1793;
 			ARG 1 slot
 		METHOD method_63684 translationKey (Ljava/lang/String;)Lnet/minecraft/class_1792$class_1793;

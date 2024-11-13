@@ -13,10 +13,10 @@ CLASS net/minecraft/class_1308 net/minecraft/entity/mob/MobEntity
 		COMMENT The base chance (before applying difficulty) that a mob's equipped item can become enchanted.
 		COMMENT
 		COMMENT @see MobEntity#enchantMainHandItem
-	FIELD field_30087 MINIMUM_DROPPED_XP_PER_EQUIPMENT I
+	FIELD field_30087 MINIMUM_DROPPED_EXPERIENCE_PER_EQUIPMENT I
 		COMMENT The minimum additional experience a mob will drop per item of equipment they have.
 		COMMENT
-		COMMENT @see MobEntity#getXpToDrop
+		COMMENT @see MobEntity#getExperienceToDrop
 	FIELD field_30088 AI_DISABLED_FLAG I
 	FIELD field_30089 LEFT_HANDED_FLAG I
 	FIELD field_30090 ATTACKING_FLAG I
@@ -153,8 +153,6 @@ CLASS net/minecraft/class_1308 net/minecraft/entity/mob/MobEntity
 	METHOD method_56677 isWearingBodyArmor ()Z
 	METHOD method_56678 equipBodyArmor (Lnet/minecraft/class_1799;)V
 		ARG 1 stack
-	METHOD method_57296 hasComponentsOtherThanDamage (Lnet/minecraft/class_1799;)Z
-		ARG 0 stack
 	METHOD method_58634 setEquipmentFromTable (Lnet/minecraft/class_9652;)V
 		ARG 1 equipmentTable
 	METHOD method_58635 createEquipmentLootParameters (Lnet/minecraft/class_3218;)Lnet/minecraft/class_8567;
@@ -196,7 +194,7 @@ CLASS net/minecraft/class_1308 net/minecraft/entity/mob/MobEntity
 		ARG 1 canPickUpLoot
 	METHOD method_5955 prefersNewEquipment (Lnet/minecraft/class_1799;Lnet/minecraft/class_1799;Lnet/minecraft/class_1304;)Z
 		ARG 1 newStack
-		ARG 2 oldStack
+		ARG 2 currentStack
 		ARG 3 slot
 	METHOD method_5957 canSpawn (Lnet/minecraft/class_4538;)Z
 		ARG 1 world
@@ -297,5 +295,14 @@ CLASS net/minecraft/class_1308 net/minecraft/entity/mob/MobEntity
 	METHOD method_63634 getHandDropChances ()[F
 	METHOD method_63635 getArmorDropChances ()[F
 	METHOD method_6510 isAttacking ()Z
+	METHOD method_65345 getPreferredWeapon ()Lnet/minecraft/class_6862;
+	METHOD method_65346 perfersNewArmor (Lnet/minecraft/class_1799;Lnet/minecraft/class_1799;Lnet/minecraft/class_1304;)Z
+		ARG 1 newStack
+		ARG 2 currentStack
+		ARG 3 slot
+	METHOD method_65347 prefersNewWeapon (Lnet/minecraft/class_1799;Lnet/minecraft/class_1799;Lnet/minecraft/class_1304;)Z
+		ARG 1 newStack
+		ARG 2 currentStack
+		ARG 3 slot
 	METHOD method_7217 setBaby (Z)V
 		ARG 1 baby
